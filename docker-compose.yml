@@ -1,0 +1,21 @@
+version:  '3'
+services: 
+    db:
+        image: mongo
+    repo:
+        build: 
+            context: ./repo
+            dockerfile: Dockerfile.builder
+        ports:
+            - "8888:8888" #debug only
+    collector:
+        build:
+            context: ./collector
+            dockerfile: Dockerfile.builder
+    web:
+        build:
+            context: ./web
+            dockerfile: Dockerfile.builder
+        ports:
+            - "80:80" 
+        
