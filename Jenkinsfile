@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'maven3'
+        maven 'MAVEN_HOME'
     }
     stages{
         stage('Build'){
@@ -24,7 +24,7 @@ pipeline {
                 nexusUrl: '172.18.0.9:8081',
                 nexusVersion: 'nexus3',
                 protocol: 'http',
-                repository: 'maven-releases', 
+                repository: 'maven-releases',
                 version: '1.0.0'
             }
         }
