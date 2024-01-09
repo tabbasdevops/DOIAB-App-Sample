@@ -1,0 +1,21 @@
+name: Test Docker image
+
+on: workflow_dispatch
+
+jobs:
+  builder:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: build
+        run: |
+            docker build -t tabbasdevops/test-docker-hub:latest
+      - name: publish
+        run: |
+            docker login -u tabbasdevops-p ${{ secrets.DOCKER_HUB_TOKEN }}
+            docker push tabbasdevops/test-docker-hub:latest
+
+        
+      
