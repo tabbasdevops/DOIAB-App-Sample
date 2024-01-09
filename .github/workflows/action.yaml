@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v3
       - name: build
         run: |
-            docker build -t tabbasdevops/test-docker-hub:latest
+            docker build . -t tabbasdevops/test-docker-hub:latest
       - name: publish
         run: |
             docker login -u tabbasdevops-p ${{ secrets.DOCKER_HUB_TOKEN }}
