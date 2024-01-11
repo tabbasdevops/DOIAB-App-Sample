@@ -1,12 +1,10 @@
-# Build Image
-FROM alpine
-
-RUN apk add --no-cache bash
+# Dockerfile
+FROM golang:latest
 
 WORKDIR /app
 
-COPY entrypoint.sh .
+COPY . .
 
-RUN chmod +x entrypoint.sh
+RUN go build -o myapp
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["./myapp"]
